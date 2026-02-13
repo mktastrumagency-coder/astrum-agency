@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrum Agency - Navegando el universo digital</title>
+    <meta name="description" content="Astrum Agency - Agencia de marketing digital especializada en Social Media, Meta Ads, Branding y Creación de Contenido.">
+    
+    <style>
+        /* Importar fuentes web temporales - reemplazar con Degular cuando esté hosteada */
+        @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
+        
+        /* Degular Display - Se cargará desde los archivos .otf que subirás */
+        @font-face {
+            font-family: 'Degular Display';
+            src: url('degular-regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --white: #F5F5F5;
+            --light-gray: #A8A8A8;
+            --mid-gray: #5A5A5A;
+            --dark-gray: #2B2B2B;
+            --accent-gray: #2D2D2D;
+            --black: #0A0A0A;
+        }
+        
+        body {
+            font-family: 'Darker Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--white), var(--light-gray));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 1rem 4rem;
+            background: rgba(10, 10, 10, 0.9);
+        }
+        
+        .logo {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-cta {
+            padding: 0.75rem 2rem;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: 1px solid var(--white);
+        }
+        
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--white);
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gradient-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(88, 88, 88, 0.3) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: var(--white);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        /* Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+        }
+        
+        .shooting-star:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation: shoot 3s ease-in-out 2s infinite;
+        }
+        
+        .shooting-star:nth-child(2) {
+            top: 40%;
+            left: 50%;
+            animation: shoot 3s ease-in-out 5s infinite;
+        }
+        
+        .shooting-star:nth-child(3) {
+            top: 60%;
+            left: 80%;
+            animation: shoot 3s ease-in-out 8s infinite;
+        }
+        
+        /* Orbiting Moon/Satellite */
+        .celestial-body {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #5a5a5a, #1a1a1a);
+            box-shadow: 
+                inset -15px -15px 30px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(255, 255, 255, 0.15);
+            animation: orbit 40s linear infinite;
+            transform-origin: 50vw 50vh;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .hero h1 {
+            font-family: 'Degular Display', 'Darker Grotesque', sans-serif;
+            font-size: clamp(4rem, 12vw, 11rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 4rem;
+            line-height: 0.95;
+        }
+        
+        .hero-tagline {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+            color: var(--light-gray);
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+            text-transform: uppercase;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+        
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            color: var(--light-gray);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 10rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 5rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--dark-gray);
+            background: rgba(42, 42, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 45, 45, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            border-color: var(--accent-gray);
+            background: rgba(45, 45, 45, 0.3);
+            transform: translateY(-8px);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .service-number {
+            font-size: 0.75rem;
+            color: var(--accent-gray);
+            letter-spacing: 0.25em;
+            font-weight: 600;
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1));
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-title {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .service-description {
+            color: var(--light-gray);
+            font-weight: 400;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .service-underline {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gray), transparent);
+            margin-top: 2rem;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover .service-underline {
+            width: 100%;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 10rem 4rem;
+            background: linear-gradient(180deg, var(--black) 0%, #1a1a1a 50%, var(--black) 100%);
+        }
+        
+        .portfolio-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, #3a3a3a 0%, var(--accent-gray) 100%);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .portfolio-item:hover .portfolio-info {
+            transform: translateY(0);
+        }
+        
+        .portfolio-category {
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .portfolio-title {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        
+        .sparkle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-item:hover .sparkle {
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 15rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Degular Display', 'Darker Grotesque', sans-serif;
+            font-size: clamp(2.5rem, 9vw, 7rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 4rem;
+            line-height: 1.1;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1.3rem 3.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            border: 1px solid var(--white);
+            color: var(--white);
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            fill: currentColor;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            color: var(--black);
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .btn-primary::before {
+            background: transparent;
+            border: 1px solid var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem;
+            border-top: 1px solid var(--dark-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Monument Extended', 'Darker Grotesque', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-300px) translateY(300px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(300px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(300px) rotate(-360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+            
+            nav.scrolled {
+                padding: 1rem 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-cta {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.85rem;
+            }
+            
+            .services,
+            .portfolio,
+            .cta-section {
+                padding: 6rem 2rem;
+            }
+            
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .celestial-body {
+                width: 60px;
+                height: 60px;
+            }
+            
+            @keyframes orbit {
+                0% {
+                    transform: rotate(0deg) translateX(150px) rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg) translateX(150px) rotate(-360deg);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="logo">Astrum</div>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://bit.ly/AstrumAgencyCordoba" target="_blank" class="nav-cta">Hablemos</a>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="gradient-orb" id="gradientOrb"></div>
+        <div class="stars-container" id="starsContainer"></div>
+        
+        <!-- Shooting Stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <!-- Orbiting Celestial Body -->
+        <div class="celestial-body"></div>
+        
+        <div class="hero-content">
+            <h1>Astrum<br>Agency</h1>
+            <p class="hero-tagline">Navegando el universo digital</p>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">01</div>
+                    <img src="data:image/png;base64,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" class="service-icon" alt="Social Media">
+                </div>
+                <h3 class="service-title">Social Media Marketing</h3>
+                <p class="service-description">Construimos presencia digital que conecta. Estrategias que convierten seguidores en comunidad y engagement en resultados.</p>
+                <div class="service-underline"></div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">02</div>
+                    <img src="data:image/png;base64,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" class="service-icon" alt="Diseño">
+                </div>
+                <h3 class="service-title">Diseño Gráfico & Branding</h3>
+                <p class="service-description">Identidades visuales que trascienden. Desde el concepto hasta la ejecución, creamos marcas memorables.</p>
+                <div class="service-underline"></div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">03</div>
+                    <img src="data:image/png;base64,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" class="service-icon" alt="Meta Ads">
+                </div>
+                <h3 class="service-title">Meta Ads</h3>
+                <p class="service-description">Campañas en Facebook e Instagram que generan resultados. Segmentación precisa y optimización constante para maximizar tu ROAS.</p>
+                <div class="service-underline"></div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">04</div>
+                    <img src="data:image/png;base64,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" class="service-icon" alt="Contenido">
+                </div>
+                <h3 class="service-title">Creación de Contenido</h3>
+                <p class="service-description">Contenido que cuenta historias. Fotos, videos y diseños que capturan la esencia de tu marca y conectan con tu audiencia.</p>
+                <div class="service-underline"></div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">05</div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE9UlEQVR4nO2ZWWgVVxzGv/+5N9fcm5vEJSZx36NGY6NR0dpqi0ttH1qhCH2oD4UiLRQKBR8KfSgUhD60UOhDoS+FPvWhCxRKW1pbW2uttdpqrVs1xn1fEpc8zL+dmZx7584kN4nEBwf+MDNz5jvfb845c87MBWaxiEVsDYtKfUkJmXm3iDSIyCIRKQTgOj8CoEdEOgDoMfHw49BexCJRVlYmA6F7CkRkq4h8bI2+LSJnRaQVQBcevvZr39FWi+McgmY9xh7rMfZQX1/v5OUFj1LX1z+3/2cSfD/4EkCNiKwE4CY9qgmQN2lAjlkjE7R3SEqcYtKb1Gn0/ZI13Gx4dU5d+jkHQOzCCCgJ5Cc+QLR1UGCMxUXtubfQY2wA7lqL/E0N1lscx9kPQI+3xDZqwxsB3BMRGaBx9xZ8fWkfFgZOY4TjCPt3oeVyPc7enI/XSj5GibcXYF/fblwMbJVjrcfMOBJJPE+hYWYRgLNW/yFSzs+H1mJNsAUv13+DUi+AIulGAIfR6O/EO4VfocTbjWH2Ifj7eXn/rQz/zvE/rwWCRSJyg+OtYk4DRvuQBSDU1+YJTrV/gDLvm3j7+bPWuxS1HcDKlgB0o/V/bOiMqh0M24ZV/lY8F7iCn64+g6MX1mC/vwULnTOYN4NAZpiGh6qUyykJu8d6BsvNKpAV/nNpwKu9p3AusAWVzvA/DzKIATQA8GpqU4gF7EDfKABH25+DZ33g1PyE0KjTvhJY41cD0AAgaH4+6RWBGlc+QKXbiVN3Nl0EvNEGHO69h/8ACPq3pTVwQkjWPg/g1xTgHv0g6zP1DjjShtcKvovt7Xc/wvGz8/DqkhMp+zQAhgO33dDdqkDV/K4J+0/dSenPM4AODSZRuQDWRZuG6Fj9SqpwpG9rpLkj2vfn4x+gof6D2N8ljg8YnpgZxDEwRd1xdBiB6tC+MXZCO7XtfGA9jvdW4mjvmth7n/QgqHuwO++n+L95PoAxgqTCdD1YKVnPAoD1oVFhHjKmjTvycrRhQr/mvYGl0pk4jqGLn+G9JZ+m/a8I3EGnuxyHbzyp7yjQpncMACnJEAo/eRRZ6e9IJqwIfpf2jlL3Tv5xZJJGT8d6Jnl6vr2avm5Rl5Yjgqz2/5kRhGVMi3zvI+v4MbPPb36U0Rk97fvGkb4nJeNW50dpQLI5I7pO00lM4V9I3/c/LhnPP9KNwG/jFfvn+nq8uuST9AY1FfdYUOOt8LejqeADLPTOxLzfGUOL51QQfb4OZ73+DvlvlgGcdv1Wz8X1Q0ux6Z5D5u8U0A2ATgBt+kM/T2mb4Y5oHzv40vU4egPr0lJ3O+/XifWzq+0aZJvN2mjE0I16b2OfP45pG+DftRBaKDHNqKS9JfreFoBOxykSM6Y4Kqj6+oYU4Mf6fVo7Kz+bZTAzpDPYFXv/5/+0Zv0NMauMlnY+sLIzSUbL2lvAb8FVXD+4EqP15+J9bQCy9u9MA7J03Y0MIH+oX8kN0hvsUmEsNncS1D+Jz/RTXD7wvJ6vj7RvTt/edcaB6dDw/fbFWo+hTZ/EK/d8MeDZYOrE0eYK6L3E/D5SiYXOtZs1tP/49vj16+srzRl9GWCLumN7mL/PL2Ixx4iGhoYpd+wVtbW1k/4u/l+KWMQiFnOM/gFbVBT7W7k3cQAAAABJRU5ErkJggg==" class="service-icon" alt="Email">
+                </div>
+                <h3 class="service-title">Email Marketing & Automation</h3>
+                <p class="service-description">Automatizaciones que nutren relaciones. Comunicación personalizada que impulsa conversiones.</p>
+                <div class="service-underline"></div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">06</div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFmklEQVR4nO2Za2wVVRDHf+fee+/tlr60pVBKS6EURFEEBYMRTfwgiV8wGqNGE/1gTDQmfvGDJn7xg4mJiYnRGBMTE6MxGhMTX0EQQaW8W0p5FBAK7YOW0vZxb3vvnZibvcs+7nt7W0swyV7SzH7Y/zn/M7Mzc2YXzvEfF5VuB4eSd9+7VLq7e8sBWaqU6gO6lVKHLn3t7UmlVKdSqlMplVBKdQItU+0HpdT0UfOCSq/yDMsfL/fPeZA/3r8+PiAxBEhzlTbv7EevL/N/6fV6pR+AB4GVwG1ASRaeqYLQgCagAtgqwTEBnJDgrfUdW57e8dBi48Pg/jWPBFYBHwJvAzcBXqB8Clu0r1xlx3eBUmAJcHE2IBFACM8o1LYgHuAl4FPgcqA0T79FJqbRApwtCMAA8JbJpLEZY38F3pPxqhj7AuC+YkDA77ViPgRuKBBjMdACzAH8MvabP3xOwUAsBkvBd8DHwJVpcUKFu8aYp5T6Qil1TCnVL/21+pGbCwKhLTlK3dw7QBXwfAzEBUd+lnN+A74BPpZ7h4C/gYNAg/y/V/43OPIz8L3j/C/APoevAfiLpkKuRx4HbosTU+MI5kv05jkCfQp4xhHoWpYIiD7YjFh3xYnpdgQ7APwiIH8CD4t1t/j5DOgCWoE9QDOwS8Y0OGy7ZOwgcBx4x+R05kC2WVpA/gY+EGv1Kx1+Tv25TsYtAd6X8XrH/lvON8j5fY5zmk7Z/x24dQrHQb7O/h3gJsaLTi3uKvn/VW28VvCnHJkCMAE4An+m36TXnSk/LjgxJxTvxkAO/Ob5KhFklyN4r8VrfvqzbJ+eZ8bZq4Rh2RfISe5VZB/p9wL1wOVOxb0TEN9PBdrrGOt33CsR36d+rANuc9wPyJnSHHyWc/yEREDKxMd+h0X0qH9V/BDPxuSTAFuAx2S+acvQN8XAvmKAVAJbyOaQY4wG4D9UBCFiEKB7RuRhR2W3OLZJZ8q94n24YCBaVMa08hb1DBlW70SSOE+sHhN1gMxRq2cCRFeGvBIrp+SKYa+KuYPzX+w4c0+MOesYH5R5o0U53yvjeuRJb5Hze+S8vnPUYavntf0AsJgMor/WbcBzMlfrVxnnPHvEsdfrKK1fB26ecJCC/kD5d+A9iYHudm9LTJqL5rIR8h8Bh50Nj+yKU/k2uUwfiaPwYxJr/Q3XOfZnSo/cARyQ+y1ye1Ue/irV0EGJkaF4l2xFZFo5vYW5QizTxwi6MJg73Y60xhhndB9hv6+q7d3+Tfs+1E+OeA6pIuNRwLpU2zoU8LvFuhqYf9UNLyy88obl3n6lDgCbgYvEuv/sWDjwQ8P2BEAggTXDe/lh/i/RQP+cixY0br56yS21i29wNWz7Yrft+7cAhAdL5l4u+zzG0n3kltnrrMqcpnvuLZ+TXL/r+/cLAmIB8Rf23gG0ASuAikvXrLm/fN7cFTqG0Ub3gPT2ksbiS36+cs0jd/WdPLLV/uzfCSSoGv4ZqkdjJfWPtOUtvev1s/s/i+z7TM91tfb2bPh+w56dPSePnHDmXHm1uy19FqoS/knvVmMjWumJkyei4y2ltL/e1u692zZuWbd+2z8pwM1AGdDrYjQR+TZfAZwGjwvtbU6cvN3M0z6SAdGhUgd8B3xpevTTiHanHZt+l1JXJvsHBZ6U7WaO35GS8t0fPlzbua3hDTuS40YOsG51bW1SY5/efIpVy5R6VF/+OQfsvqOvp7+jdQMQkN5qFJPDR0A97j3PrKmpedRy4ydR+mO81v6x5+e0b/U87nP+rlBT/YrJP+Bc/xvxD13Xl82lzkYdAAAAAElFTkSuQmCC" class="service-icon" alt="Analítica">
+                </div>
+                <h3 class="service-title">Analítica & Estrategia</h3>
+                <p class="service-description">Data que guía decisiones. Transformamos métricas en insights accionables para tu crecimiento.</p>
+                <div class="service-underline"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Casos Destacados</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-overlay"></div>
+                <div class="sparkle">✨</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">PRÓXIMAMENTE</div>
+                    <h3 class="portfolio-title">Proyecto 01</h3>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-overlay"></div>
+                <div class="sparkle">✨</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">PRÓXIMAMENTE</div>
+                    <h3 class="portfolio-title">Proyecto 02</h3>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-overlay"></div>
+                <div class="sparkle">✨</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">PRÓXIMAMENTE</div>
+                    <h3 class="portfolio-title">Proyecto 03</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="contacto" class="cta-section">
+        <h2>Hablemos de<br>tu marca</h2>
+        <div class="cta-buttons">
+            <a href="https://bit.ly/AstrumAgencyCordoba" class="btn btn-primary" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                WhatsApp
+            </a>
+            <a href="https://www.instagram.com/astrum.agency/" class="btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Instagram
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Astrum Agency</div>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/astrum.agency/" target="_blank">Instagram</a>
+            <a href="https://bit.ly/AstrumAgencyCordoba" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Gradient Orb follows mouse
+        const gradientOrb = document.getElementById('gradientOrb');
+        let orbX = 0, orbY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            orbX = e.clientX - 250;
+            orbY = e.clientY - 250;
+        });
+        
+        function animateOrb() {
+            gradientOrb.style.left = orbX + 'px';
+            gradientOrb.style.top = orbY + 'px';
+            requestAnimationFrame(animateOrb);
+        }
+        
+        animateOrb();
+        
+        // Create Stars
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 2 + 0.5 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+        
+        // Scroll Progress
+        const scrollProgress = document.querySelector('.scroll-progress');
+        window.addEventListener('scroll', () => {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+        
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Intersection Observer for service cards
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 800);
+            }
+        });
+    </script>
+</body>
+</html>
