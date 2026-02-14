@@ -236,7 +236,19 @@
             opacity: 0;
             animation: fadeInUp 1s var(--transition-smooth) 0.3s forwards;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-value {
+            font-family: 'Darker Grotesque', 'SF Pro Text', sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--white);
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-smooth) 0.4s forwards;
         }
         
         .hero-cta {
@@ -284,9 +296,90 @@
         }
         
         .services {
-            padding: 8rem 2rem;
+            padding: 5rem 2rem 3rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .how-we-work {
+            padding: 5rem 2rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            text-align: left;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .process-step:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(8px);
+        }
+        
+        .process-step h3 {
+            font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .process-step p {
+            color: var(--light-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .pain-points {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+        }
+        
+        .pain-points-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pain-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .pain-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent-gray);
+            transform: translateY(-4px);
+        }
+        
+        .pain-card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--white);
         }
         
         .section-title {
@@ -294,7 +387,7 @@
             font-size: clamp(2rem, 5vw, 4.5rem);
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             text-align: center;
             text-transform: uppercase;
         }
@@ -366,7 +459,7 @@
         }
         
         .portfolio {
-            padding: 8rem 2rem;
+            padding: 5rem 2rem;
             background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
         }
         
@@ -434,8 +527,71 @@
         }
         
         .cta-section {
-            padding: 10rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
+        }
+        
+        .faq-section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: var(--light-gray);
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s var(--transition-smooth);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--transition-smooth), padding 0.4s var(--transition-smooth);
+            padding: 0 2rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 2rem 1.5rem;
+        }
+        
+        .faq-answer p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-size: 1rem;
         }
         
         .cta-section h2 {
@@ -623,7 +779,13 @@
             .services,
             .portfolio,
             .cta-section {
-                padding: 5rem 1.5rem;
+                padding: 4rem 1.5rem;
+            }
+            
+            .pain-points,
+            .how-we-work,
+            .faq-section {
+                padding: 3rem 1.5rem;
             }
             
             .services-grid,
@@ -679,6 +841,7 @@
         <div class="hero-content">
             <h1>Astrum<br>Agency</h1>
             <p class="hero-tagline">Navegando el universo digital</p>
+            <p class="hero-value">Ayudamos a marcas a vender más con estrategias digitales y Meta Ads</p>
             <div class="hero-cta">
                 <a href="https://wa.link/ay0wqt" target="_blank" rel="noopener" class="btn-hero">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
@@ -692,6 +855,47 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="pain-points-container">
+            <h2 class="section-title">¿Te suena familiar?</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <p>"Invertís en redes y no ves resultados"</p>
+                </div>
+                <div class="pain-card">
+                    <p>"Publicás pero no sabés si está funcionando"</p>
+                </div>
+                <div class="pain-card">
+                    <p>"Sentís que estás improvisando tu estrategia digital"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How We Work Section -->
+    <section class="how-we-work">
+        <h2 class="section-title">Cómo trabajamos</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <h3>Auditoría inicial</h3>
+                <p>Estudio de mercado digital de la marca y competencia</p>
+            </div>
+            <div class="process-step">
+                <h3>Estrategia personalizada</h3>
+                <p>Creamos un plan a medida según tus objetivos y público objetivo</p>
+            </div>
+            <div class="process-step">
+                <h3>Implementación</h3>
+                <p>Ejecutamos la estrategia con creatividad y precisión</p>
+            </div>
+            <div class="process-step">
+                <h3>Optimización continua</h3>
+                <p>Monitoreamos, analizamos y mejoramos constantemente los resultados</p>
             </div>
         </div>
     </section>
@@ -781,6 +985,41 @@
                     <h3 class="portfolio-title">Proyecto 03</h3>
                 </div>
             </article>
+        </div>
+    </section>
+    
+    <!-- FAQ / Objections Section -->
+    <section class="faq-section">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Y si ya trabajé con otra agencia y no funcionó?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Entendemos tu frustración. La diferencia está en nuestro enfoque: comenzamos con una auditoría profunda para entender qué no funcionó antes, establecemos KPIs claros desde el día uno, y te mantenemos informado con reportes semanales. No hay sorpresas, solo resultados medibles y transparencia total.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Esto aplica a negocios pequeños?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Absolutamente. De hecho, los negocios pequeños son los que más se benefician de una estrategia digital bien ejecutada. Trabajamos con presupuestos adaptados a cada realidad y priorizamos las acciones que generan mayor impacto. No necesitás ser una gran empresa para tener resultados de gran empresa.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Cuánto necesito invertir?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>La inversión depende de tus objetivos y alcance deseado. En nuestra primera consulta, analizamos tu situación y diseñamos una propuesta a medida. Podemos trabajar con presupuestos desde $XXX/mes que incluyen estrategia, gestión de redes y Meta Ads. Lo importante es maximizar cada peso invertido con ROI positivo.</p>
+            </div>
         </div>
     </section>
     
@@ -902,6 +1141,22 @@
                     window.scrollTo({top: 0, behavior: 'smooth'});
                 }
             });
+        }
+        
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
         }
     </script>
     
