@@ -619,6 +619,16 @@
             line-height: 1.15;
         }
         
+        .highlight {
+            background: var(--white);
+            color: var(--black);
+            padding: 0.1em 0.3em;
+            border-radius: 4px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            display: inline;
+        }
+        
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
@@ -1097,7 +1107,7 @@
     </section>
     
     <section id="contacto" class="cta-section">
-        <h2>Si querés dejar de improvisar<br>y empezar a crecer con una<br>estrategia clara, escribinos.</h2>
+        <h2>Si querés <span class="highlight">dejar de improvisar</span><br>y <span class="highlight">empezar a crecer</span> con una<br>estrategia clara, <span class="highlight">escribinos</span>.</h2>
         <div class="cta-buttons">
             <a href="https://wa.link/ay0wqt" class="btn btn-primary" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
