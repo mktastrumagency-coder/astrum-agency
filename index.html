@@ -11,6 +11,11 @@
     <meta name="author" content="Astrum Agency">
     <meta name="robots" content="index, follow">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="apple-touch-icon" href="favicon.jpg">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://astrum.agency/">
@@ -610,18 +615,8 @@
             font-size: clamp(2rem, 6vw, 4.5rem);
             font-weight: 400;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-        }
-        
-        .cta-subtitle {
-            font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
-            font-size: clamp(1.3rem, 3vw, 2.5rem);
-            font-weight: 600;
-            letter-spacing: -0.01em;
             margin-bottom: 3rem;
-            text-transform: uppercase;
-            color: var(--light-gray);
+            line-height: 1.15;
         }
         
         .cta-buttons {
@@ -1069,11 +1064,40 @@
                 <p>La inversión depende de tus objetivos y alcance deseado. En nuestra primera consulta, analizamos tu situación y diseñamos una propuesta a medida. Podemos trabajar con presupuestos desde $XXX/mes que incluyen estrategia, gestión de redes y Meta Ads. Lo importante es maximizar cada peso invertido con ROI positivo.</p>
             </div>
         </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Cuánto tiempo tarda en verse resultados?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Los primeros indicadores empiezan a verse en 15-30 días: mejoras en engagement, alcance y calidad de interacciones. Resultados tangibles de ventas o conversiones generalmente aparecen entre el segundo y tercer mes, cuando la estrategia está optimizada. El marketing digital es una inversión a mediano plazo, no magia instantánea.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Trabajan solo con empresas grandes?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Para nada. Trabajamos con emprendedores, PyMEs y empresas en crecimiento. De hecho, es donde más impacto generamos: ayudando a marcas que están dando sus primeros pasos digitales o quieren profesionalizar lo que ya hacen. El tamaño no importa, lo que importa es tu compromiso con crecer.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Tengo que firmar un contrato largo?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>No trabajamos con contratos que te aten por años. Recomendamos un mínimo de 3 meses para que la estrategia tenga tiempo de funcionar y optimizarse, pero después trabajamos mes a mes. Si no ves resultados o no estás conforme, podés cancelar. Confiamos en nuestro trabajo, no en cláusulas de permanencia.</p>
+            </div>
+        </div>
     </section>
     
     <section id="contacto" class="cta-section">
         <h2>Si querés dejar de improvisar<br>y empezar a crecer con una<br>estrategia clara, escribinos.</h2>
-        <p class="cta-subtitle">Hablemos de tu marca</p>
         <div class="cta-buttons">
             <a href="https://wa.link/ay0wqt" class="btn btn-primary" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
