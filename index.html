@@ -408,6 +408,15 @@
             text-transform: uppercase;
         }
         
+        .section-intro {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--light-gray);
+            text-align: center;
+            max-width: 700px;
+            margin: -1.5rem auto 3rem;
+            line-height: 1.6;
+        }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -444,10 +453,10 @@
         }
         
         .service-number {
-            font-size: 0.75rem;
-            color: var(--accent-gray);
+            font-size: 0.95rem;
+            color: var(--white);
             letter-spacing: 0.2em;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .service-icon {
@@ -494,11 +503,42 @@
             overflow: hidden;
             cursor: pointer;
             border-radius: 18px;
-            transition: transform 0.3s var(--transition-smooth);
+            transition: all 0.4s var(--transition-smooth);
         }
         
         .portfolio-item:hover {
             transform: scale(1.02);
+        }
+        
+        .project-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            transform: translateY(100%);
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        
+        .project-card:hover .project-details {
+            transform: translateY(0);
+        }
+        
+        .project-card:hover .portfolio-info {
+            transform: translateY(-120%);
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        
+        .portfolio-info {
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        
+        .project-details p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-size: 1rem;
         }
         
         .portfolio-overlay {
@@ -616,14 +656,16 @@
             font-weight: 400;
             letter-spacing: -0.02em;
             margin-bottom: 3rem;
-            line-height: 1.15;
+            line-height: 1.65;
         }
         
         .highlight {
             background: var(--white);
             color: var(--black);
-            padding: 0.1em 0.3em;
-            border-radius: 4px;
+            font-weight: 700;
+            padding: 0.15em 0.4em;
+            margin: 0 0.25em;
+            border-radius: 0;
             box-decoration-break: clone;
             -webkit-box-decoration-break: clone;
             display: inline;
@@ -651,6 +693,13 @@
             align-items: center;
             justify-content: center;
             gap: 0.625rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .cta-section .btn-primary {
+                padding: 1.25rem 3.5rem;
+                font-size: 1.125rem;
+            }
         }
         
         .btn svg {
@@ -690,13 +739,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
         
         .footer-content {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .footer-info {
+            flex: 1;
         }
         
         .footer-logo {
@@ -704,6 +759,19 @@
             font-size: 1.1rem;
             font-weight: 500;
             letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-tagline {
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+            max-width: 350px;
+        }
+        
+        .footer-location {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
         }
         
         .footer-social a {
@@ -726,7 +794,7 @@
         
         .footer-copyright {
             text-align: center;
-            color: var(--mid-gray);
+            color: var(--white);
             font-size: 0.8rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -828,6 +896,17 @@
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
+                align-items: center;
+            }
+            
+            .footer-info {
+                text-align: center;
+                align-items: center;
+            }
+            
+            .footer-tagline {
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .celestial-body {
@@ -867,7 +946,7 @@
         <div class="hero-content">
             <h1>Astrum<br>Agency</h1>
             <p class="hero-tagline">Navegando el universo digital</p>
-            <p class="hero-value">Ayudamos a marcas a vender más con estrategias digitales y Meta Ads</p>
+            <p class="hero-value">Ayudamos a marcas a <strong>vender más</strong> con <strong>estrategias digitales</strong> y <strong>Meta Ads</strong></p>
             <div class="hero-cta">
                 <a href="https://wa.link/ay0wqt" target="_blank" rel="noopener" class="btn-hero">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
@@ -889,24 +968,31 @@
     <section class="pain-points">
         <div class="pain-points-container">
             <h2 class="section-title">¿Te suena familiar?</h2>
+            <p class="section-intro">Hablamos con marcas todos los días. Estas son algunas de las frases que más escuchamos:</p>
             <div class="pain-grid">
                 <div class="pain-card">
-                    <p>"Invertís en redes y no ves resultados"</p>
+                    <p>"Invierto en publicidad y no veo resultados"</p>
                 </div>
                 <div class="pain-card">
-                    <p>"Publicás pero sabés que no está funcionando"</p>
+                    <p>"Publico pero no sé qué es lo que no está funcionando"</p>
                 </div>
                 <div class="pain-card">
-                    <p>"Tu estrategia digital la improvisás como podés (Y es lógico)"</p>
+                    <p>"Improviso una estrategia como puedo y pierdo tiempo"</p>
                 </div>
                 <div class="pain-card">
-                    <p>"El tiempo para hacer lo que sabés lo estás perdiendo en manejar vos mismo tus redes sociales"</p>
+                    <p>"No puedo dedicarle tiempo a mi negocio porque lo uso para crear contenido, publicar y estar encima de las redes"</p>
                 </div>
                 <div class="pain-card">
-                    <p>"Querés crecer pero no sabés por dónde empezar ni qué métricas mirar"</p>
+                    <p>"Quiero crecer pero no sé ni por dónde empezar"</p>
                 </div>
                 <div class="pain-card">
-                    <p>"Probaste mil cosas pero ninguna te dio los resultados que esperabas"</p>
+                    <p>"Probé un montón de cosas pero nunca tuve los resultados que quería"</p>
+                </div>
+                <div class="pain-card">
+                    <p>"Le pago a un CM para que termine haciéndolo yo mismo"</p>
+                </div>
+                <div class="pain-card">
+                    <p>"La agencia con la que trabajo no sabe nada de mí"</p>
                 </div>
             </div>
         </div>
@@ -915,22 +1001,31 @@
     <!-- How We Work Section -->
     <section class="how-we-work">
         <h2 class="section-title">Cómo trabajamos</h2>
+        <p class="section-intro">Estos son los primeros pasos para empezar a trabajar juntos</p>
         <div class="process-steps">
             <div class="process-step">
                 <h3>Auditoría inicial</h3>
-                <p>Estudio de mercado digital de la marca y competencia</p>
+                <p>Analizamos tu marca, la de tu competencia, tus métricas y tu perfil</p>
             </div>
             <div class="process-step">
-                <h3>Estrategia personalizada</h3>
-                <p>Creamos un plan a medida según tus objetivos y público objetivo</p>
+                <h3>Presentación del análisis</h3>
+                <p>Hacemos una reunión para presentarte el análisis, comentarte los cambios y hablar sobre la estrategia inicial</p>
+            </div>
+            <div class="process-step">
+                <h3>Estrategia y calendario</h3>
+                <p>Creamos la estrategia y el calendario, te lo presentamos para que lo apruebes</p>
             </div>
             <div class="process-step">
                 <h3>Implementación</h3>
-                <p>Ejecutamos la estrategia con creatividad y precisión</p>
+                <p>Implementamos la estrategia de contenido y vamos optimizando mediante métricas</p>
             </div>
             <div class="process-step">
-                <h3>Optimización continua</h3>
-                <p>Monitoreamos, analizamos y mejoramos constantemente los resultados</p>
+                <h3>Seguimiento continuo</h3>
+                <p>Mantenemos reuniones (Semanales o Quincenales)</p>
+            </div>
+            <div class="process-step">
+                <h3>Creación de contenido</h3>
+                <p>Vamos a crear el contenido 1 vez al mes dependiendo tus necesidades</p>
             </div>
         </div>
     </section>
@@ -947,13 +1042,14 @@
     
     <section id="servicios" class="services">
         <h2 class="section-title">Servicios</h2>
+        <p class="section-intro">Soluciones digitales completas para hacer crecer tu marca</p>
         <div class="services-grid">
             <article class="service-card">
                 <div class="service-header">
                     <div class="service-number">01</div>
                     <div class="service-icon">📱</div>
                 </div>
-                <h3 class="service-title">Social Media Marketing</h3>
+                <h3 class="service-title">Social Media</h3>
                 <p class="service-description">Construimos presencia digital que conecta en Instagram, Facebook y TikTok. Estrategias que convierten seguidores en comunidad y engagement en resultados.</p>
             </article>
             
@@ -1005,37 +1101,72 @@
     </section>
     
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title">Casos Destacados</h2>
+        <h2 class="section-title">Diferentes proyectos</h2>
+        <p class="section-intro">Ejemplos de cómo podemos ayudarte a alcanzar tus objetivos</p>
         <div class="portfolio-grid">
-            <article class="portfolio-item">
+            <article class="portfolio-item project-card">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">PRÓXIMAMENTE</div>
-                    <h3 class="portfolio-title">Proyecto 01</h3>
+                    <div class="portfolio-category">E-COMMERCE</div>
+                    <h3 class="portfolio-title">Tienda Nube</h3>
+                </div>
+                <div class="project-details">
+                    <p>Creamos tiendas online completas en Tienda Nube optimizadas para conversión. Desde el diseño visual hasta la configuración de medios de pago, envíos y estrategia de productos. Ideal para marcas que quieren vender 24/7 con una plataforma profesional y escalable.</p>
                 </div>
             </article>
             
-            <article class="portfolio-item">
+            <article class="portfolio-item project-card">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">PRÓXIMAMENTE</div>
-                    <h3 class="portfolio-title">Proyecto 02</h3>
+                    <div class="portfolio-category">PUBLICIDAD</div>
+                    <h3 class="portfolio-title">Meta Ads</h3>
+                </div>
+                <div class="project-details">
+                    <p>Campañas publicitarias en Facebook e Instagram enfocadas en resultados reales. Segmentación precisa, creatividades que convierten y optimización constante basada en datos. Perfecto para marcas que quieren escalar sus ventas con inversión publicitaria inteligente.</p>
                 </div>
             </article>
             
-            <article class="portfolio-item">
+            <article class="portfolio-item project-card">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">PRÓXIMAMENTE</div>
-                    <h3 class="portfolio-title">Proyecto 03</h3>
+                    <div class="portfolio-category">DESARROLLO WEB</div>
+                    <h3 class="portfolio-title">Diseño Web & Landing Pages</h3>
+                </div>
+                <div class="project-details">
+                    <p>Sitios web y landing pages diseñados para convertir visitas en clientes. Diseño responsive, optimizado para SEO y velocidad de carga. Desde páginas institucionales hasta landings de alta conversión para campañas específicas.</p>
                 </div>
             </article>
             
-            <article class="portfolio-item">
+            <article class="portfolio-item project-card">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">PRÓXIMAMENTE</div>
-                    <h3 class="portfolio-title">Proyecto 04</h3>
+                    <div class="portfolio-category">REDES SOCIALES</div>
+                    <h3 class="portfolio-title">Social Media</h3>
+                </div>
+                <div class="project-details">
+                    <p>Gestión integral de Instagram, Facebook y TikTok. Estrategia de contenido, diseño de piezas, copywriting, programación y community management. Construimos comunidades activas que se convierten en clientes reales.</p>
+                </div>
+            </article>
+            
+            <article class="portfolio-item project-card">
+                <div class="portfolio-overlay"></div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">CONTENIDO</div>
+                    <h3 class="portfolio-title">Creación de Contenido</h3>
+                </div>
+                <div class="project-details">
+                    <p>Producción de contenido visual y escrito que conecta con tu audiencia. Desde sesiones fotográficas y videos para redes, hasta diseño de piezas gráficas y redacción de copies persuasivos. Contenido que cuenta tu historia y vende.</p>
+                </div>
+            </article>
+            
+            <article class="portfolio-item project-card">
+                <div class="portfolio-overlay"></div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">IDENTIDAD</div>
+                    <h3 class="portfolio-title">Branding & Diseño</h3>
+                </div>
+                <div class="project-details">
+                    <p>Creación de identidad visual completa para tu marca. Logo, paleta de colores, tipografías, manual de marca y aplicaciones en todos los puntos de contacto. Construimos marcas memorables que se diferencian en el mercado.</p>
                 </div>
             </article>
         </div>
@@ -1044,24 +1175,35 @@
     <!-- FAQ / Objections Section -->
     <section class="faq-section">
         <h2 class="section-title">Preguntas frecuentes</h2>
+        <p class="section-intro">Siempre surgen dudas a la hora de contratar una agencia, te compartimos algunas preguntas frecuentes</p>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                <span>¿Y si ya trabajé con otra agencia y no funcionó?</span>
+                <span>¿Con qué tipo de marcas trabajan?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>Entendemos tu frustración. La diferencia está en nuestro enfoque: comenzamos con una auditoría profunda para entender qué no funcionó antes, establecemos KPIs claros desde el día uno, y te mantenemos informado con reportes semanales. No hay sorpresas, solo resultados medibles y transparencia total.</p>
+                <p>Trabajamos principalmente con marcas y negocios que quieren crecer y profesionalizar su presencia digital. No importa si estás empezando o si ya tenés un negocio en marcha. Lo importante es que busques hacer las cosas con estrategia y no improvisar.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                <span>¿Esto aplica a negocios pequeños?</span>
+                <span>¿Necesito tener redes, web o campañas activas?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>Absolutamente. De hecho, los negocios pequeños son los que más se benefician de una estrategia digital bien ejecutada. Trabajamos con presupuestos adaptados a cada realidad y priorizamos las acciones que generan mayor impacto. No necesitás ser una gran empresa para tener resultados de gran empresa.</p>
+                <p>No. Podemos trabajar desde cero o mejorar lo que ya tengas. Analizamos tu situación actual y definimos el mejor camino en base a tu negocio y tus objetivos.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>¿Cómo empezamos a trabajar juntos?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>El primer paso es que nos cuentes sobre tu marca. A partir de eso analizamos tu situación y te damos una devolución clara sobre qué se puede mejorar y cómo podríamos ayudarte. Si vemos que podemos ayudarte, te explicamos cómo sería el proceso de trabajo.</p>
             </div>
         </div>
         
@@ -1071,43 +1213,33 @@
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>La inversión depende de tus objetivos y alcance deseado. En nuestra primera consulta, analizamos tu situación y diseñamos una propuesta a medida. Podemos trabajar con presupuestos desde $XXX/mes que incluyen estrategia, gestión de redes y Meta Ads. Lo importante es maximizar cada peso invertido con ROI positivo.</p>
+                <p>Depende de cada caso. Analizamos tu negocio, tus objetivos y te recomendamos la mejor forma de invertir para lograr resultados reales, sin gastar de más.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                <span>¿Cuánto tiempo tarda en verse resultados?</span>
+                <span>¿Qué diferencia a Astrum de otras agencias?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>Los primeros indicadores empiezan a verse en 15-30 días: mejoras en engagement, alcance y calidad de interacciones. Resultados tangibles de ventas o conversiones generalmente aparecen entre el segundo y tercer mes, cuando la estrategia está optimizada. El marketing digital es una inversión a mediano plazo, no magia instantánea.</p>
+                <p>No trabajamos de forma genérica. Analizamos cada caso y construimos una estrategia clara, enfocada en generar crecimiento real y sostenido.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                <span>¿Trabajan solo con empresas grandes?</span>
+                <span>¿Cómo sé si esto puede funcionar para mi negocio?</span>
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>Para nada. Trabajamos con emprendedores, PyMEs y empresas en crecimiento. De hecho, es donde más impacto generamos: ayudando a marcas que están dando sus primeros pasos digitales o quieren profesionalizar lo que ya hacen. El tamaño no importa, lo que importa es tu compromiso con crecer.</p>
-            </div>
-        </div>
-        
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                <span>¿Tengo que firmar un contrato largo?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>No trabajamos con contratos que te aten por años. Recomendamos un mínimo de 3 meses para que la estrategia tenga tiempo de funcionar y optimizarse, pero después trabajamos mes a mes. Si no ves resultados o no estás conforme, podés cancelar. Confiamos en nuestro trabajo, no en cláusulas de permanencia.</p>
+                <p>Cada negocio es distinto. Por eso el primer paso es analizar tu situación y ver qué oportunidades existen.</p>
             </div>
         </div>
     </section>
     
     <section id="contacto" class="cta-section">
-        <h2>Si querés <span class="highlight">dejar de improvisar</span><br>y <span class="highlight">empezar a crecer</span> con una<br>estrategia clara, <span class="highlight">escribinos</span>.</h2>
+        <h2>Si querés <span class="highlight">dejar de improvisar</span> <br>y <span class="highlight">empezar a crecer</span> con una <br>estrategia clara, <span class="highlight">escribinos</span>.</h2>
         <div class="cta-buttons">
             <a href="https://wa.link/ay0wqt" class="btn btn-primary" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1120,7 +1252,11 @@
     
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Astrum Agency</div>
+            <div class="footer-info">
+                <div class="footer-logo">Astrum Agency</div>
+                <p class="footer-tagline">Estrategias digitales para marcas que buscan crecer</p>
+                <p class="footer-location">Córdoba, Argentina</p>
+            </div>
             <div class="footer-social">
                 <a href="https://www.instagram.com/astrum.agency/" target="_blank" rel="noopener" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -1130,7 +1266,8 @@
             </div>
         </div>
         <div class="footer-copyright">
-            © <span id="currentYear"></span> Astrum Agency. Todos los derechos reservados. Córdoba, Argentina.
+            © <span id="currentYear"></span> Astrum Agency. Todos los derechos reservados.<br>
+            <span style="opacity: 0.6; font-size: 0.75rem; margin-top: 0.5rem; display: inline-block;">Designed & Developed by Astrum Agency</span>
         </div>
     </footer>
     
