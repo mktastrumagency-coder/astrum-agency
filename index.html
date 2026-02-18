@@ -301,6 +301,22 @@
             color: var(--light-gray);
         }
         
+        .hero-link {
+            margin-top: 1.5rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-smooth) 0.8s forwards;
+        }
+        
+        .hero-link:hover {
+            color: var(--white);
+        }
+        
         .services {
             padding: 5rem 2rem 3rem;
             max-width: 1200px;
@@ -338,6 +354,13 @@
             padding: 2rem 2.5rem;
             text-align: left;
             transition: all 0.3s var(--transition-smooth);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .process-step:hover {
@@ -932,7 +955,7 @@
         <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" role="button" tabindex="0">Astrum</div>
         <ul class="nav-links">
             <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#portfolio">Proyectos</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
         <a href="https://wa.link/ay0wqt" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
@@ -946,13 +969,13 @@
         <div class="hero-content">
             <h1>Astrum<br>Agency</h1>
             <p class="hero-tagline">Navegando el universo digital</p>
-            <p class="hero-value">Ayudamos a marcas a <strong>vender más</strong> con <strong>estrategias digitales</strong> y <strong>Meta Ads</strong></p>
+            <p class="hero-value">Ayudamos a marcas a <strong>vender más</strong> con <strong>estrategias digitales</strong> <strong>y publicidad</strong></p>
             <div class="hero-cta">
                 <a href="https://wa.link/ay0wqt" target="_blank" rel="noopener" class="btn-hero">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                         <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                     </svg>
-                    Hablemos de tu proyecto
+                    Contanos sobre tu marca
                 </a>
             </div>
             
@@ -961,6 +984,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
             </div>
+            
+            <a href="#como-trabajamos" class="hero-link">Ver cómo trabajamos</a>
         </div>
     </section>
     
@@ -999,33 +1024,25 @@
     </section>
     
     <!-- How We Work Section -->
-    <section class="how-we-work">
+    <section id="como-trabajamos" class="how-we-work">
         <h2 class="section-title">Cómo trabajamos</h2>
-        <p class="section-intro">Estos son los primeros pasos para empezar a trabajar juntos</p>
+        <p class="section-intro">Un proceso claro, estratégico y enfocado en resultados</p>
         <div class="process-steps">
             <div class="process-step">
-                <h3>Auditoría inicial</h3>
-                <p>Analizamos tu marca, la de tu competencia, tus métricas y tu perfil</p>
+                <h3>Análisis</h3>
+                <p>Entendemos tu marca, tu contexto y detectamos oportunidades reales de crecimiento</p>
             </div>
             <div class="process-step">
-                <h3>Presentación del análisis</h3>
-                <p>Hacemos una reunión para presentarte el análisis, comentarte los cambios y hablar sobre la estrategia inicial</p>
-            </div>
-            <div class="process-step">
-                <h3>Estrategia y calendario</h3>
-                <p>Creamos la estrategia y el calendario, te lo presentamos para que lo apruebes</p>
+                <h3>Estrategia</h3>
+                <p>Diseñamos un plan claro y personalizado, alineado a tus objetivos</p>
             </div>
             <div class="process-step">
                 <h3>Implementación</h3>
-                <p>Implementamos la estrategia de contenido y vamos optimizando mediante métricas</p>
+                <p>Ejecutamos la estrategia y optimizamos continuamente en base a métricas</p>
             </div>
             <div class="process-step">
-                <h3>Seguimiento continuo</h3>
-                <p>Mantenemos reuniones (Semanales o Quincenales)</p>
-            </div>
-            <div class="process-step">
-                <h3>Creación de contenido</h3>
-                <p>Vamos a crear el contenido 1 vez al mes dependiendo tus necesidades</p>
+                <h3>Seguimiento</h3>
+                <p>Mantenemos reuniones periódicas para acompañarte de forma constante, donde te escuchamos, resolvemos dudas y optimizamos la estrategia a medida que tu marca avanza</p>
             </div>
         </div>
     </section>
@@ -1239,7 +1256,7 @@
     </section>
     
     <section id="contacto" class="cta-section">
-        <h2>Si querés <span class="highlight">dejar de improvisar</span> <br>y <span class="highlight">empezar a crecer</span> con una <br>estrategia clara, <span class="highlight">escribinos</span>.</h2>
+        <h2>Si querés <span class="highlight">dejar de improvisar</span> <br>y <span class="highlight">empezar a crecer</span> con una <br>estrategia clara, <span class="highlight">escribinos.</span></h2>
         <div class="cta-buttons">
             <a href="https://wa.link/ay0wqt" class="btn btn-primary" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1342,6 +1359,11 @@
         
         document.querySelectorAll('.service-card').forEach(card => {
             observer.observe(card);
+        });
+        
+        // Observe process steps too
+        document.querySelectorAll('.process-step').forEach(step => {
+            observer.observe(step);
         });
         
         window.addEventListener('scroll', () => {
