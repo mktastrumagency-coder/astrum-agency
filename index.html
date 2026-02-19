@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Performance Optimizations -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="degular-regular.otf" as="font" type="font/otf" crossorigin>
+    
     <!-- SEO Meta Tags -->
     <title>Astrum Agency | Agencia de Marketing Digital en Córdoba</title>
     <meta name="description" content="Agencia de marketing digital en Córdoba especializada en Social Media, Meta Ads, Branding y Creación de Contenido. Transformamos tu presencia digital.">
@@ -133,7 +139,7 @@
         .nav-links a {
             color: var(--light-gray);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 400;
             letter-spacing: 0.01em;
             transition: color 0.2s ease;
@@ -305,8 +311,8 @@
             margin-top: 1.5rem;
             color: var(--light-gray);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 400;
+            font-size: 1.1rem;
+            font-weight: 500;
             letter-spacing: 0.02em;
             transition: color 0.3s ease;
             opacity: 0;
@@ -371,7 +377,7 @@
         
         .process-step h3 {
             font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             letter-spacing: -0.01em;
@@ -379,7 +385,7 @@
         
         .process-step p {
             color: var(--light-gray);
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.6;
         }
         
@@ -432,7 +438,7 @@
         }
         
         .section-intro {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
             color: var(--light-gray);
             text-align: center;
             max-width: 700px;
@@ -493,7 +499,7 @@
         
         .service-title {
             font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.875rem;
             letter-spacing: -0.01em;
@@ -503,7 +509,7 @@
             color: var(--light-gray);
             font-weight: 400;
             line-height: 1.6;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
         
         .portfolio {
@@ -522,11 +528,17 @@
         .portfolio-item {
             aspect-ratio: 16/10;
             background: linear-gradient(135deg, #2a2a2a 0%, var(--accent-gray) 100%);
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
             cursor: pointer;
             border-radius: 18px;
             transition: all 0.4s var(--transition-smooth);
+        }
+        
+        .portfolio-item[style*="background-image"] {
+            background: none !important;
         }
         
         .portfolio-item:hover {
@@ -561,7 +573,7 @@
         .project-details p {
             color: var(--light-gray);
             line-height: 1.7;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
         
         .portfolio-overlay {
@@ -670,7 +682,7 @@
         .faq-answer p {
             color: var(--light-gray);
             line-height: 1.7;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
         
         .cta-section h2 {
@@ -691,6 +703,14 @@
             border-radius: 0;
             box-decoration-break: clone;
             -webkit-box-decoration-break: clone;
+            display: inline;
+        }
+        
+        .mobile-break {
+            display: inline;
+        }
+        
+        .mobile-break-inline {
             display: inline;
         }
         
@@ -893,6 +913,14 @@
                 display: none;
             }
             
+            .mobile-break {
+                display: block;
+            }
+            
+            .mobile-break-inline {
+                display: block;
+            }
+            
             .services,
             .portfolio,
             .cta-section {
@@ -993,7 +1021,7 @@
     <section class="pain-points">
         <div class="pain-points-container">
             <h2 class="section-title">¿Te suena familiar?</h2>
-            <p class="section-intro">Hablamos con marcas todos los días. Estas son algunas de las frases que más escuchamos:</p>
+            <p class="section-intro"><span class="mobile-break-inline">Hablamos con marcas todos los días. Estas son algunas de las frases</span> <span class="mobile-break-inline">que más escuchamos:</span></p>
             <div class="pain-grid">
                 <div class="pain-card">
                     <p>"Invierto en publicidad y no veo resultados"</p>
@@ -1154,7 +1182,7 @@
                 </div>
             </article>
             
-            <article class="portfolio-item project-card">
+            <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('caso-exito.jpg'); background-size: cover; background-position: center;">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">REDES SOCIALES</div>
@@ -1165,7 +1193,7 @@
                 </div>
             </article>
             
-            <article class="portfolio-item project-card">
+            <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('social-media.jpg'); background-size: cover; background-position: center;">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">CONTENIDO</div>
@@ -1176,7 +1204,7 @@
                 </div>
             </article>
             
-            <article class="portfolio-item project-card">
+            <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('branding.jpg'); background-size: cover; background-position: center;">
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">IDENTIDAD</div>
@@ -1192,7 +1220,7 @@
     <!-- FAQ / Objections Section -->
     <section class="faq-section">
         <h2 class="section-title">Preguntas frecuentes</h2>
-        <p class="section-intro">Siempre surgen dudas a la hora de contratar una agencia, te compartimos algunas preguntas frecuentes</p>
+        <p class="section-intro"><span class="mobile-break-inline">Siempre surgen dudas a la hora de contratar una agencia,</span> <span class="mobile-break-inline">te compartimos algunas preguntas frecuentes</span></p>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
@@ -1256,7 +1284,7 @@
     </section>
     
     <section id="contacto" class="cta-section">
-        <h2>Si querés <span class="highlight">dejar de improvisar</span> <br>y <span class="highlight">empezar a crecer</span> con una <br>estrategia clara, <span class="highlight">escribinos.</span></h2>
+        <h2><span class="mobile-break">Si querés <span class="highlight">dejar de improvisar</span></span> <span class="mobile-break">y <span class="highlight">empezar a crecer</span></span> <span class="mobile-break">con una estrategia clara,</span> <span class="mobile-break"><span class="highlight">escribinos.</span></span></h2>
         <div class="cta-buttons">
             <a href="https://wa.link/ay0wqt" class="btn btn-primary" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1399,6 +1427,44 @@
             if (!wasActive) {
                 faqItem.classList.add('active');
             }
+        }
+        
+        // Service Worker for caching (Progressive Web App)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Create inline service worker
+                const swCode = `
+                    const CACHE_NAME = 'astrum-v1';
+                    const urlsToCache = [
+                        '/',
+                        '/degular-regular.otf',
+                        '/favicon.jpg',
+                        '/social-media.jpg',
+                        '/branding.jpg',
+                        '/caso-exito.jpg'
+                    ];
+                    
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => cache.addAll(urlsToCache))
+                        );
+                    });
+                    
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => response || fetch(event.request))
+                        );
+                    });
+                `;
+                
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                
+                navigator.serviceWorker.register(swUrl)
+                    .catch(err => console.log('SW registration failed'));
+            });
         }
     </script>
     
