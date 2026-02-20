@@ -527,7 +527,6 @@
         
         .portfolio-item {
             aspect-ratio: 16/10;
-            background: linear-gradient(135deg, #2a2a2a 0%, var(--accent-gray) 100%);
             background-size: cover;
             background-position: center;
             position: relative;
@@ -537,8 +536,8 @@
             transition: all 0.4s var(--transition-smooth);
         }
         
-        .portfolio-item[style*="background-image"] {
-            background: none !important;
+        .portfolio-item:not([style*="background-image"]) {
+            background: linear-gradient(135deg, #2a2a2a 0%, var(--accent-gray) 100%);
         }
         
         .portfolio-item:hover {
@@ -579,13 +578,14 @@
         .portfolio-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(45, 45, 45, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-            opacity: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+            opacity: 1;
             transition: opacity 0.3s ease;
         }
         
         .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+            opacity: 0.95;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
         }
         
         .portfolio-info {
@@ -1183,7 +1183,6 @@
             </article>
             
             <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('caso-exito.jpg'); background-size: cover; background-position: center;">
-                <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">REDES SOCIALES</div>
                     <h3 class="portfolio-title">Social Media</h3>
@@ -1194,7 +1193,6 @@
             </article>
             
             <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('social-media.jpg'); background-size: cover; background-position: center;">
-                <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">CONTENIDO</div>
                     <h3 class="portfolio-title">Creación de Contenido</h3>
@@ -1205,7 +1203,6 @@
             </article>
             
             <article class="portfolio-item project-card" style="background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.7)), url('branding.jpg'); background-size: cover; background-position: center;">
-                <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">IDENTIDAD</div>
                     <h3 class="portfolio-title">Branding & Diseño</h3>
