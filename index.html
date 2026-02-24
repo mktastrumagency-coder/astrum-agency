@@ -536,7 +536,17 @@
             transition: all 0.4s var(--transition-smooth);
         }
         
-        .portfolio-item:not([style*="background-image"]) {
+        .portfolio-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .portfolio-item:not([style*="background-image"]):not(:has(.portfolio-video)) {
             background: linear-gradient(135deg, #2a2a2a 0%, var(--accent-gray) 100%);
         }
         
@@ -1142,7 +1152,7 @@
                     <div class="service-icon">💻</div>
                 </div>
                 <h3 class="service-title">Diseño Web</h3>
-                <p class="service-description">Creamos Tienda Nube, landing pages y sitios web que convierten. Diseños profesionales, responsivos y optimizados para SEO que representan tu marca digitalmente.</p>
+                <p class="service-description">Creamos e-commerce con Tienda Nube, landing pages y sitios web que convierten. Diseños profesionales, responsivos y optimizados para SEO que representan tu marca digitalmente.</p>
             </article>
         </div>
     </section>
@@ -1152,6 +1162,9 @@
         <p class="section-intro">Ejemplos de cómo podemos ayudarte a alcanzar tus objetivos</p>
         <div class="portfolio-grid">
             <article class="portfolio-item project-card">
+                <video autoplay loop muted playsinline class="portfolio-video">
+                    <source src="tienda-nube.mp4" type="video/mp4">
+                </video>
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">E-COMMERCE</div>
@@ -1162,8 +1175,7 @@
                 </div>
             </article>
             
-            <article class="portfolio-item project-card">
-                <div class="portfolio-overlay"></div>
+            <article class="portfolio-item project-card" style="background-image: url('meta-ads.jpg'); background-size: cover; background-position: center;">
                 <div class="portfolio-info">
                     <div class="portfolio-category">PUBLICIDAD</div>
                     <h3 class="portfolio-title">Meta Ads</h3>
