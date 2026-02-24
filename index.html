@@ -640,6 +640,47 @@
             margin: 0 auto;
         }
         
+        .why-choose {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .why-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .why-card h3 {
+            font-family: 'Monument Extended', 'SF Pro Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .why-card p {
+            color: var(--light-gray);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
         .faq-item {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1063,6 +1104,32 @@
         </div>
     </section>
     
+    <!-- Why Choose Astrum Section -->
+    <section class="why-choose">
+        <h2 class="section-title">Por qué elegir Astrum</h2>
+        <div class="why-grid">
+            <article class="why-card">
+                <h3>Nos involucramos en tu negocio</h3>
+                <p>No trabajamos desde afuera. Nos involucramos en cada proyecto, entendemos tu contexto y trabajamos con un enfoque estratégico y comercial.</p>
+            </article>
+            
+            <article class="why-card">
+                <h3>Comunicación directa y constante</h3>
+                <p>Tenés contacto directo con nosotros. Te escuchamos, resolvemos dudas y acompañamos el proceso con reuniones periódicas y respuestas rápidas.</p>
+            </article>
+            
+            <article class="why-card">
+                <h3>Estrategias adaptadas a cada marca</h3>
+                <p>Analizamos tu negocio y tu competencia para construir una estrategia alineada a tu realidad, sin aplicar soluciones genéricas.</p>
+            </article>
+            
+            <article class="why-card">
+                <h3>Flexibilidad y capacidad de adaptación</h3>
+                <p>Trabajamos de forma ágil, nos adaptamos a las necesidades de cada cliente y realizamos ajustes a medida que el proyecto avanza.</p>
+            </article>
+        </div>
+    </section>
+    
     <!-- How We Work Section -->
     <section id="como-trabajamos" class="how-we-work">
         <h2 class="section-title">Cómo trabajamos</h2>
@@ -1165,7 +1232,6 @@
                 <video autoplay loop muted playsinline class="portfolio-video">
                     <source src="tienda-nube.mp4" type="video/mp4">
                 </video>
-                <div class="portfolio-overlay"></div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">E-COMMERCE</div>
                     <h3 class="portfolio-title">Tienda Nube</h3>
